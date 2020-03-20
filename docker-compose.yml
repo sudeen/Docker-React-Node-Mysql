@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  mysql-dev:
+    image: mysql:5.7
+    container_name: assignment_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: metigy_db
+      MYSQL_ROOT_USER: root
+      # MYSQL_USER: assignment
+      # MYSQL_PASSWORD: assignmentadmin
+    ports:
+      - 3306:3306
+  app:
+    build: ./app_container
+    container_name: assignment_backend
+    restart: always
+    ports:
+      - 8080:3000
